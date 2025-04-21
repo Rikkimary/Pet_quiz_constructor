@@ -1,0 +1,170 @@
+#header {
+    background-image: url('http://localhost:8000/static/front_image/headers_web.jpg'); /* Путь к вашему изображению */
+    background-size: cover; /* Растягиваем изображение на всю область */
+    background-position: center; /* Центрируем изображение */
+    /*background-repeat: no-repeat; !* Запрещаем повторение *!*/
+    padding: 20px;
+    color: white; /* Цвет текста для контраста */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Тень для текста */
+}
+
+body {
+    background-image: url('http://localhost:8000/static/front_image/body_front2.jpg'); /* Путь к вашему изображению */
+    background-size: cover;
+    background-position: center;
+    /*background-repeat: no-repeat;*/
+    background-attachment: fixed; /* Фиксируем фон при прокрутке */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Минимальная высота на весь экран */
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+#edit-quiz-form {
+    display: none;
+    position: relative;
+    z-index: 9999;
+}
+
+
+#showAll-quizzes-container {
+    display: flex;
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+    gap: 20px; /* Расстояние между элементами */
+    padding: 20px; /* Отступы внутри контейнера */
+}
+
+.showAll-quizzes {
+    flex: 1 1 calc(33.33% - 40px); /* 3 колонки с учетом отступов */
+    border: 1px solid #ccc; /* Рамка вокруг каждого квиза */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    background-color: #f9f9f9; /* Фон */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.showAll-quizzes img {
+    max-width: 100%; /* Ограничение ширины изображения */
+    height: auto; /* Сохранение пропорций */
+    border-radius: 8px; /* Закругленные углы для изображения */
+}
+
+.showAll-quizzes h3 {
+    margin: 10px 0; /* Отступы для заголовка */
+    font-size: 1.5em; /* Размер шрифта */
+}
+
+.showAll-quizzes p {
+    margin: 5px 0; /* Отступы для текста */
+    color: #555; /* Цвет текста */
+}
+
+.start-button {
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор в виде указателя */
+    font-size: 1em; /* Размер шрифта */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.start-button:hover {
+    background-color: #0056b3; /* Цвет фона при наведении */
+}
+
+#quizzes-container {
+    display: flex;
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+    gap: 20px; /* Расстояние между элементами */
+    padding: 20px; /* Отступы внутри контейнера */
+}
+
+.quiz-item {
+    flex: 1 1 calc(33.33% - 40px); /* 3 колонки с учетом отступов */
+    border: 1px solid #ccc; /* Рамка вокруг каждого квиза */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    background-color: #f9f9f9; /* Фон */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.quiz-item img {
+    max-width: 100%; /* Ограничение ширины изображения */
+    height: auto; /* Сохранение пропорций */
+    border-radius: 8px; /* Закругленные углы для изображения */
+}
+
+.quiz-item h3 {
+    margin: 10px 0; /* Отступы для заголовка */
+    font-size: 1.5em; /* Размер шрифта */
+}
+
+.quiz-item p {
+    margin: 5px 0; /* Отступы для текста */
+    color: #555; /* Цвет текста */
+}
+
+.view-button {
+    background-color: #e5ff00; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор в виде указателя */
+    font-size: 1em; /* Размер шрифта */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.view-button:hover {
+    background-color: #b8c738; /* Цвет фона при наведении */
+}
+
+.delete-button {
+    background-color: #f50505; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем рамку */
+    padding: 10px 20px; /* Внутренние отступы */
+    border-radius: 5px; /* Закругленные углы */
+    cursor: pointer; /* Курсор в виде указателя */
+    font-size: 1em; /* Размер шрифта */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.delete-button:hover {
+    background-color: #9c3e3e; /* Цвет фона при наведении */
+}

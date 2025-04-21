@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+    <div id="header">
+        <h1 id="welcome-message">Добро пожаловать в Quiz App!</h1>
+        <div id="auth-buttons">
+            <button id="loginButton">Вход</button>
+            <button id="registerButton">Регистрация</button>
+        </div>
+        <button id="logoutButton" style="display: none">Выход</button>
+    </div>
+
+
+    <div class="container" id="quizzes-create-container" style="display:none;">
+        <button type="submit" id="createQuizzes">Создать новый квиз</button>
+            <form id="createQuizzes-form" style="display:none;" enctype="multipart/form-data">
+                <h2>Создание квиза</h2>
+                <input type="text" id="name_quiz" placeholder="Введите общее название квизов" required>
+                <input type="text" id="title" placeholder="Введите название теста" required>
+                <textarea id="description" placeholder="Описание квиза" required></textarea>
+                <input type="file" id="image" accept="image/*" required>
+                <button type="submit">Создать квиз</button>
+                <div id="createQuiz-message"></div>
+            </form>
+            <form id="createQuizzesQuestions-form" style="display:none;" enctype="multipart/form-data">
+                <h2>Добавление вопросов к созданному квизу</h2>
+                <input type="text" id="question" placeholder="Введите  название вопроса" required>
+                <input type="file" id="image_quest" accept="image/*" required>
+                <button type="submit">Подтвердить форму вопроса</button>
+                <div id="createQuizzesQuestions-message"></div>
+            </form>
+            <form id="createQuizzesQuestionsAnswers-form" style="display:none;" enctype="multipart/form-data">
+                <h2>Добавление ответов к созданному квизу</h2>
+                <input type="text" id="answer" placeholder="Введите  ответ" required>
+                <label for="is_correct">Этот ответ правильный?</label>
+                <select id="is_correct">
+                    <option value="false">Нет</option>
+                    <option value="true">Да</option>
+                </select>
+                <button type="submit" id="append">Добавить ответ</button>
+                <button type="submit" id="stop">Подтвердить форму ответов</button>
+                <div id="createQuizzesQuestionsAnswers-message"></div>
+            </form>
+            <form id="submitAppendQuestion-form" style="display:none;" enctype="multipart/form-data">
+                <h2>Хотите добавить еще вопросы к созданному квизу?</h2>
+                <button type="submit" id="append-question">Добавить еще вопрос</button>
+                <button type="submit" id="stop-question">Завершить</button>
+            </form>
+    </div>
+
+    <div class="container" id="main-content" style="display: none;">
+        <form id="register-form" style="display:none;">
+            <h2>Регистрация</h2>
+            <input type="text" id="username" placeholder="Имя пользователя" required>
+            <input type="email" id="email" placeholder="Ваш email" required>
+            <input type="password" id="password" placeholder="Пароль" required>
+            <input type="password" id="password2" placeholder="Подтверждение пароля" required>
+            <button type="submit">Зарегистрироваться</button>
+            <div id="register-message"></div>
+        </form>
+
+        <form id="login-form" style="display:none;">
+            <h2>Авторизация</h2>
+            <input type="text" id="login-username" placeholder="Имя пользователя" required>
+            <input type="password" id="login-password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+            <div id="login-message"></div>
+        </form>
+
+        <div id="quizzes-container" style="display:none;">
+            <div id="quiz-list">
+                <!-- Пример квиза -->
+                <div class="quiz-item">
+
+                </div>
+            </div>
+            <div id="questions-list">
+                <div class="quiz-details">
+
+                </div>
+            </div>
+            <div id="answers-list">
+                <div class="question-details">
+
+                </div>
+            </div>
+            <div id="answers-container">
+
+            </div>
+
+
+            <div id="edit-quiz">
+                <div class="edit-quiz-form">
+
+                </div>
+                <div class="edit-quizQuestion-form">
+
+                </div>
+                <template id="edit-quizQuestionAnswer-form">
+                    <form class="edit-answer-form" enctype="multipart/form-data">
+                        <label for="answer">Вариант ответа на вопрос:</label>
+                        <input type="text" id="answer" name="answer">
+                        <label for="is_correct">Этот ответ правильный?</label>
+                        <select id="is_correct" name="is_correct">
+                            <option value="false">Нет</option>
+                            <option value="true">Да</option>
+                        </select>
+                    </form>
+                </template>
+            </div>
+
+        </div>
+        <div id="messageElement" style="display: none; color: red;">
+
+        </div>
+    </div>
+
+    <div class="container" id="showAll-quizzes-container" style="display:none;">
+        <div id="showAll-quizzes">
+
+        </div>
+    </div>
+
+
+
+    <script src="js/after_bags_scripts.js"></script>
+
+</body>
+</html>
+
+
