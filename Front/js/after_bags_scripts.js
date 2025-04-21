@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         formData.append('password', document.getElementById('password').value);
         formData.append('password2', document.getElementById('password2').value);
         console.log("Data being sent: ", JSON.stringify(Object.fromEntries(formData)));
-        const response = await fetch('http://localhost:8000/api/register/', {
+        const response = await fetch(`/api/register/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const username = document.getElementById("login-username").value;
         const password = document.getElementById("login-password").value;
 
-        const response = await fetch('http://localhost:8000/api/token/', {
+        const response = await fetch(`/api/token/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         quizzesShowAllContainer.innerHTML = '<h2>Список квизов сайта</h2>';
         messageElement.innerText = "Для доступа к функциям создания квизов, просим Вас пройти регистрацию и авторизацию!!" +
             " С уважением, Администрация сайта.";
-        const responseAll = await fetch('http://localhost:8000/api/quiztitle/', {
+        const responseAll = await fetch(`/api/quiztitle/`, {
             method: "GET",
         });
         if (responseAll.ok) {
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadQuizzes() {
         quizzesContainer.innerHTML = '';
         quizzesContainer.innerHTML = '<h2>Список Ваших квизов</h2>';
-        const response = await fetch('http://localhost:8000/api/quiztitle/', {
+        const response = await fetch(`/api/quiztitle/`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('access')}`,
             },
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Удаление квиза
     async function deleteQuiz(quizId) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/`, {
+            const response = await fetch(`/api/quiztitle/${quizId}/`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem("access")}`
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     async function viewQuiz(quizId, quizName) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/details/`, {
+            const response = await fetch(`/api/quiztitle/${quizId}/details/`, {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function viewAnswers(questionId, quizName, question, quizId) {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/questions/${questionId}/answers/`, {
+            const response = await fetch(`/api/quiztitle/${quizId}/questions/${questionId}/answers/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access')}`,
                 },
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // }
             console.log("Form Data: ", Array.from(formData.entries()));
             try {
-                const response = await fetch('http://127.0.0.1:8000/api/quiztitle/', {
+                const response = await fetch(`/api/quiztitle/`, {
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     console.log(`${pair[0]}: ${pair[1]}`);
                 }
                 try {
-                    const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/questions/`, {
+                    const response = await fetch(`/api/quiztitle/${quizId}/questions/`, {
                         method: 'POST',
                         body: formData,
                         headers: { 'Authorization': `Bearer ${localStorage.getItem('access')}` },
@@ -605,7 +605,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                };
                console.log("Данные перед отправкой запроса:",data)
                const response = await fetch(
-                   `http://127.0.0.1:8000/api/quiztitle/${quizId}/questions/${currentQuestionId}/answers/`,
+                   `/api/quiztitle/${quizId}/questions/${currentQuestionId}/answers/`,
                    {
                        method: 'POST',
                        body: JSON.stringify(data),
@@ -660,7 +660,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function startQuiz(quiz) {
         quizzesContainer.innerHTML = ''; // Очистка контейнера перед началом теста
         console.log(quiz);
-        const response = await fetch(`http://localhost:8000/api/quiztitle/${quiz.id}/questions/`, {
+        const response = await fetch(`/api/quiztitle/${quiz.id}/questions/`, {
             // headers: { 'Authorization': `Bearer ${localStorage.getItem('access')}` }
         });
 
@@ -700,7 +700,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
             document.getElementById('back-main-menu-button')?.addEventListener('click', async () => {
-                const response = await fetch('http://localhost:8000/api/current_user/', {
+                const response = await fetch(`/api/current_user/`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('access')}`,
                     },
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         async function loadAnswers(questionId, questionIndex) {
-            const answersResponse = await fetch(`http://localhost:8000/api/quiztitle/${quiz.id}/questions/${questionId}/answers/`, {
+            const answersResponse = await fetch(`/api/quiztitle/${quiz.id}/questions/${questionId}/answers/`, {
             });
 
             if (!answersResponse.ok) {
@@ -742,7 +742,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         function checkAnswer(selectedAnswer, button, questionIndex) {
-            fetch(`http://localhost:8000/api/quiztitle/${quiz.id}/questions/${questions[questionIndex].id}/answers/`, {
+            fetch(`/quiztitle/${quiz.id}/questions/${questions[questionIndex].id}/answers/`, {
             })
             .then(response => response.json())
             .then(answers => {
@@ -813,7 +813,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const emailAuthor = quiz.author.email
                 console.log("Data being sent: ", JSON.stringify({contactInfo, method, percentage, emailAuthor}));
                 if (contactInfo && method) {
-                    const response = await fetch('http://127.0.0.1:8000/api/contact/', {
+                    const response = await fetch(`/api/contact/`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const form = document.createElement('form'); // Начинаю создавать форму динамически
         // Загружаем данные квиза
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/`, {
+            const response = await fetch(`/api/quiztitle/${quizId}/`, {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -955,7 +955,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.log("Sending data:", Object.fromEntries(formEditData));
 
                 try {
-                    const responseEdit = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/`, {
+                    const responseEdit = await fetch(`/api/quiztitle/${quizId}/`, {
                         method: 'PATCH',
                         body: formEditData,
                         headers: {
@@ -991,7 +991,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         quizzesContainer.innerHTML = '';
         const formEditQuestion = document.createElement('form'); // Начинаем создавать здесь форму для видимости
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/details/`, {
+            const response = await fetch(`/api/quiztitle/${quizId}/details/`, {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -1060,7 +1060,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         console.log(key, value);
                     }
 
-                    const updatePromise = fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/questions/${questionId}/`, {
+                    const updatePromise = fetch(`/api/quiztitle/${quizId}/questions/${questionId}/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -1114,7 +1114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Собираем все ответы для всех вопросов
             const allAnswers = [];
             for (const questionData of questionsData) {
-                const responseAnswers = await fetch(`http://localhost:8000/api/quiztitle/${quizId}/questions/${questionData.id}/answers/`, {
+                const responseAnswers = await fetch(`/api/quiztitle/${quizId}/questions/${questionData.id}/answers/`, {
                     method: "GET",
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     }
 
                     // Отправляем PATCH-запрос для каждого ответа
-                    const updatePromise = fetch(`http://127.0.0.1:8000/api/quiztitle/${quizId}/questions/${questionId}/answers/${answerId}/`, {
+                    const updatePromise = fetch(`/api/quiztitle/${quizId}/questions/${questionId}/answers/${answerId}/`, {
                         method: 'PATCH',
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -1244,11 +1244,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     async function getCurrentUser() {
-        const accessToken = localStorage.getItem('access');
-        console.log("Токен v getcurrentuser:", accessToken)
-        const response = await fetch('http://localhost:8000/api/current_user/', {
+        console.log("Токен v getcurrentuser:", localStorage.getItem('access'))
+        const response = await fetch(`/api/current_user/`, {
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
+                'Authorization': `Bearer ${localStorage.getItem('access')}`,
             },
         });
 
