@@ -13,7 +13,26 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta #<- импортируйте это
 import os
+import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
 
+
+DATABASES= {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pet_quiz_constructor',
+        'USER': 'pet_quiz_constructor_user',
+        'PASSWORD': 'coQKIWCHaF6ImTkIKVRWlQYI6n7gXWxy',
+        'HOST': 'postgresql://pet_quiz_constructor_user:coQKIWCHaF6ImTkIKVRWlQYI6n7gXWxy@dpg-d033tdadbo4c73c8quf0-a.oregon-postgres.render.com/pet_quiz_constructor',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',  # Для Render.com
+        }
+    },
+}
+# db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'].update(db_from_env)
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # BASE_DIR = "http://127.0.0.1:8000/"
@@ -108,16 +127,18 @@ WSGI_APPLICATION = 'drf_quiz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+
 
 
 # Password validation
