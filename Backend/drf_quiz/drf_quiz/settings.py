@@ -25,7 +25,7 @@ DATABASES= {
         'NAME': 'pet_quiz_constructor',
         'USER': 'pet_quiz_constructor_user',
         'PASSWORD': 'coQKIWCHaF6ImTkIKVRWlQYI6n7gXWxy',
-        'HOST': 'postgresql://pet_quiz_constructor_user:coQKIWCHaF6ImTkIKVRWlQYI6n7gXWxy@dpg-d033tdadbo4c73c8quf0-a.oregon-postgres.render.com/pet_quiz_constructor',
+        'HOST': 'dpg-d033tdadbo4c73c8quf0-a.oregon-postgres.render.com/pet_quiz_constructor',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',  # Для Render.com
